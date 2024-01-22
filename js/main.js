@@ -1,3 +1,12 @@
+const inputErrorMessageDay = document.querySelector(".input-error-day");
+const inputErrorMessageMonth = document.querySelector(".input-error-month");
+const inputErrorMessageYear = document.querySelector(".input-error-year");
+const inputDayDiv = document.querySelector(".input-day");
+const inputMonthDiv = document.querySelector(".input-month");
+const inputYearDiv = document.querySelector(".input-year");
+const labelDay = document.querySelector(".label-day");
+const labelMonth = document.querySelector(".label-month");
+const labelYear = document.querySelector(".label-year");
 const inputDay = document.querySelector("#day");
 const inputMonth = document.querySelector("#month");
 const inputYear = document.querySelector("#year");
@@ -5,6 +14,7 @@ const btn = document.querySelector(".button");
 const showResultYears = document.querySelector(".show-result-years");
 const showResultMonths = document.querySelector(".show-result-months");
 const showResultDays = document.querySelector(".show-result-days");
+const errorMessageInputBlank = "This field is required";
 
 const calculateAge = () => {
   const currentDate = new Date();
@@ -16,21 +26,9 @@ const calculateAge = () => {
   let years = currentDate.getFullYear() - birthDate.getFullYear();
   let months = currentDate.getMonth() - birthDate.getMonth();
   let days = currentDate.getDate() - birthDate.getDate();
-  console.log({
-    year: Number(inputYear.value),
-    month: Number(inputMonth.value),
-    day: Number(inputDay.value),
-  });
-  console.log({
-    currentMonth: currentDate.getMonth(),
-    birthDateMonth: birthDate.getMonth(),
-  });
-  console.log({ birthDate: birthDate });
-  console.log({ years: years, months: months, days: days });
   if (months < 0 || (months == 0 && days < 0)) {
     years--;
     months += 12;
-    console.log(months);
   }
 
   if (days < 0) {
@@ -51,4 +49,30 @@ const calculateAge = () => {
   inputYear.value = "";
 };
 
-btn.addEventListener("click", calculateAge);
+const showResult = () => {
+  if (
+    inputDay.value !== "" &&
+    inputMonth.value !== "" &&
+    inputYear.value !== ""
+  ) {
+    calculateAge();
+  } else {
+    if (inputDay.value === "") {
+      inputDay.classList.add("error");
+      labelDay.classList.add("error");
+      inputErrorMessageDay.innerText = errorMessageInputBlank;
+    }
+    if (inputMonth.value === "") {
+      inputMonth.classList.add("error");
+      labelMonth.classList.add("error");
+      inputErrorMessageMonth.innerText = errorMessageInputBlank;
+    }
+    if (inputYear.value === "") {
+      inputYear.classList.add("error");
+      labelYear.classList.add("error");
+      inputErrorMessageYear.innerText = errorMessageInputBlank;
+    }
+  }
+};
+
+btn.addEventListener("click", showResult);
