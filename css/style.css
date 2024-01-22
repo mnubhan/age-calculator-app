@@ -1,20 +1,33 @@
-form{
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: left;
-    align-items: center;
+form {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: left;
+  align-items: center;
 }
-.input-day,.input-month,.input-year{
-    display:flex;
-    flex-flow:column;
-    justiy-content:left;
-    align-items:left;
+.input-day,
+.input-month,
+.input-year {
+  display: flex;
+  flex-flow: column;
+  justiy-content: left;
+  align-items: left;
 }
 
-.button{
-    background:black;
-    width:96px;
-    height:96px;
-    border-radius:50%;
-    
+.button {
+  background: black;
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+}
+input.error {
+  border: red solid 1px;
+}
+label.error {
+  color: red;
+}
+.input-error-day,
+.input-error-month,
+.input-error-year {
+  color: red;
+  font-style: italic;
 }
