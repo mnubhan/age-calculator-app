@@ -23,6 +23,27 @@ const calculateAge = () => {
     Number(inputMonth.value) - 1,
     Number(inputDay.value)
   );
+  if(birthDate.getDate()!==Number(inputDay.value)||Number(inputMonth.value)>12||Number(inputMonth.value)<1||Number(inputYear.value)>currentDate.getFullYear()){
+    inputDay.classList.add("error");
+    labelDay.classList.add("error");
+    inputMonth.classList.add("error");
+    labelMonth.classList.add("error");
+    inputYear.classList.add("error");
+    labelYear.classList.add("error");
+    if(birthDate.getDate()!==Number(inputDay.value)){
+      inputErrorMessageDay.innerText = "Must be a valid day";
+      inputErrorMessageDay.style.visibility = "visible";
+    }
+    if(Number(inputMonth.value)>12||Number(inputMonth.value)<1){
+      console.log("it run this code");
+      inputErrorMessageMonth.innerText = "Must be a valid Month"
+      inputErrorMessageMonth.style.visibility = "visible";
+    }
+    if(Number(inputYear.value)>=currentDate.getFullYear()){
+      inputErrorMessageYear.innerText ="Must be in the past";
+      inputErrorMessageYear.style.visibility = "visible"
+    }
+  }
   let years = currentDate.getFullYear() - birthDate.getFullYear();
   let months = currentDate.getMonth() - birthDate.getMonth();
   let days = currentDate.getDate() - birthDate.getDate();
@@ -44,9 +65,6 @@ const calculateAge = () => {
   showResultYears.textContent = years;
   showResultMonths.textContent = months;
   showResultDays.textContent = days;
-  inputDay.value = "";
-  inputMonth.value = "";
-  inputYear.value = "";
 };
 
 const showResult = () => {
@@ -57,20 +75,29 @@ const showResult = () => {
   ) {
     calculateAge();
   } else {
+    inputDay.classList.add("error");
+    labelDay.classList.add("error");
+    inputMonth.classList.add("error");
+    labelMonth.classList.add("error");
+    inputYear.classList.add("error");
+    labelYear.classList.add("error");
     if (inputDay.value === "") {
-      inputDay.classList.add("error");
-      labelDay.classList.add("error");
       inputErrorMessageDay.innerText = errorMessageInputBlank;
+      inputErrorMessageDay.style.visibility = "visible";
+    } else {
+      inputErrorMessageDay.style.visibility = "hidden";
     }
     if (inputMonth.value === "") {
-      inputMonth.classList.add("error");
-      labelMonth.classList.add("error");
       inputErrorMessageMonth.innerText = errorMessageInputBlank;
+      inputErrorMessageMonth.style.visibility = "visible";
+    } else {
+      inputErrorMessageMonth.style.visibility = "hidden";
     }
     if (inputYear.value === "") {
-      inputYear.classList.add("error");
-      labelYear.classList.add("error");
-      inputErrorMessageYear.innerText = errorMessageInputBlank;
+      inputErrorMessageYear.innerText = errorMessageInputBlank; 
+      inputErrorMessageYear.style.visibility = "visible";
+    } else {
+      inputErrorMessageYear.style.visibility = "hidden";
     }
   }
 };
