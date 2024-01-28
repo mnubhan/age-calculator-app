@@ -23,48 +23,71 @@ const calculateAge = () => {
     Number(inputMonth.value) - 1,
     Number(inputDay.value)
   );
-  if(birthDate.getDate()!==Number(inputDay.value)||Number(inputMonth.value)>12||Number(inputMonth.value)<1||Number(inputYear.value)>currentDate.getFullYear()){
+  if (
+    birthDate.getDate() !== Number(inputDay.value) ||
+    Number(inputMonth.value) > 12 ||
+    Number(inputMonth.value) < 1 ||
+    Number(inputYear.value) >= currentDate.getFullYear()
+  ) {
     inputDay.classList.add("error");
     labelDay.classList.add("error");
     inputMonth.classList.add("error");
     labelMonth.classList.add("error");
     inputYear.classList.add("error");
     labelYear.classList.add("error");
-    if(birthDate.getDate()!==Number(inputDay.value)){
+    // inputErrorMessageDay.style.visibility = "hidden";
+    // inputErrorMessageMonth.style.visibility ="hidden";
+    // inputErrorMessageYear.sytle.visibility ="hidden";
+    if (birthDate.getDate() !== Number(inputDay.value)) {
       inputErrorMessageDay.innerText = "Must be a valid day";
       inputErrorMessageDay.style.visibility = "visible";
+    }else{
+      inputErrorMessageDay.style.visibility = "hidden";
     }
-    if(Number(inputMonth.value)>12||Number(inputMonth.value)<1){
+    if (Number(inputMonth.value) > 12 || Number(inputMonth.value) < 1) {
       console.log("it run this code");
-      inputErrorMessageMonth.innerText = "Must be a valid Month"
+      inputErrorMessageMonth.innerText = "Must be a valid Month";
       inputErrorMessageMonth.style.visibility = "visible";
+    }else{
+      inputErrorMessageMonth.style.visibility ="hidden";
     }
-    if(Number(inputYear.value)>=currentDate.getFullYear()){
-      inputErrorMessageYear.innerText ="Must be in the past";
-      inputErrorMessageYear.style.visibility = "visible"
+    if (Number(inputYear.value) >= currentDate.getFullYear()) {
+      inputErrorMessageYear.innerText = "Must be in the past";
+      inputErrorMessageYear.style.visibility = "visible";
+    }else{
+      inputErrorMessageYear.style.visibility ="hidden";
     }
-  }
-  let years = currentDate.getFullYear() - birthDate.getFullYear();
-  let months = currentDate.getMonth() - birthDate.getMonth();
-  let days = currentDate.getDate() - birthDate.getDate();
-  if (months < 0 || (months == 0 && days < 0)) {
-    years--;
-    months += 12;
-  }
+  } else {
+    inputDay.classList.remove("error");
+    labelDay.classList.remove("error");
+    inputMonth.classList.remove("error");
+    labelMonth.classList.remove("error");
+    inputYear.classList.remove("error");
+    labelYear.classList.remove("error");
+    let years = currentDate.getFullYear() - birthDate.getFullYear();
+    let months = currentDate.getMonth() - birthDate.getMonth();
+    let days = currentDate.getDate() - birthDate.getDate();
+    if (months < 0 || (months == 0 && days < 0)) {
+      years--;
+      months += 12;
+    }
 
-  if (days < 0) {
-    months--;
-    let tempDate = new Date(
-      currentDate.getFullYear(),
-      currentDate.getMonth(),
-      0
-    );
-    days += tempDate.getDate();
+    if (days < 0) {
+      months--;
+      let tempDate = new Date(
+        currentDate.getFullYear(),
+        currentDate.getMonth(),
+        0
+      );
+      days += tempDate.getDate();
+    }
+    showResultYears.textContent = years;
+    showResultMonths.textContent = months;
+    showResultDays.textContent = days;
+    inputErrorMessageDay.style.visibility = "hidden";
+    inputErrorMessageMonth.style.visibility ="hidden";
+    inputErrorMessageYear.style.visibility ="hidden";
   }
-
-  showResultYears.textContent = years;
-  showResultMonths.textContent = months;
-  showResultDays.textContent = days;
 };
 
 const showResult = () => {
@@ -94,7 +117,7 @@ const showResult = () => {
       inputErrorMessageMonth.style.visibility = "hidden";
     }
     if (inputYear.value === "") {
-      inputErrorMessageYear.innerText = errorMessageInputBlank; 
+      inputErrorMessageYear.innerText = errorMessageInputBlank;
       inputErrorMessageYear.style.visibility = "visible";
     } else {
       inputErrorMessageYear.style.visibility = "hidden";
