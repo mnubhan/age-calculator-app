@@ -1,37 +1,93 @@
+:root {
+  --border-radius: 1.5rem 1.5rem 6.25rem;
+  --top-margin: 5.5rem;
+  --margin-right-input:16px;
+  --line:#DCDCDC;
+  --margin-container:5.5rem 1rem 15rem;
+  --font-size-span:56px;
+}
+
+@media (min-width: 426px) {
+  :root {
+    --border-radius: 1.5rem 1.5rem 12.5rem;
+    --top-margin: 11rem;
+    --margin-right-input:32px;
+    --margin-container:11rem 19rem 7rem;
+    --font-size-span:104px;
+  }
+}
+* {
+  border: 1px dotted red;
+}
+body {
+  background: lightgrey;
+}
+
+main {
+  min-height: 31rem;
+  max-width: 53rem;
+  margin-inline: auto;
+  border-radius: var(--border-radius);
+  background: white;
+  margin-top: var(--top-margin);
+}
+
 form {
   display: flex;
-  flex-flow: row wrap;
+  flex-flow: row;
   justify-content: left;
   align-items: center;
+  margin-inline: auto;
 }
-form div{
-  margin: 0 10px;
+
+form div {
+  margin-right:var(--margin-right-input);
 }
+
 .input-day,
 .input-month,
 .input-year {
   display: flex;
   flex-flow: column;
-  justiy-content: left;
-  align-items: left;
 }
-
+.container{
+  margin:var()
+  max-width:46rem;
+  top:0;
+  bottom:0;
+  flex-flow: row;
+  margin:auto;
+}
 .button {
   background: black;
   width: 96px;
   height: 96px;
   border-radius: 50%;
 }
+input {
+  width: 100%;
+  min-height:3rem;
+  max-height:4.5rem;
+  border: var(--line) solid 1px;
+  border-radius: 0.5rem;
+
+}
 input.error {
   border: red solid 1px;
 }
+
 label.error {
   color: red;
 }
+
 .input-error-day,
 .input-error-month,
 .input-error-year {
   color: red;
   font-style: italic;
   visibility: hidden;
+}
+
+span{
+  font-size:var(--font-size-span)
 }

@@ -2,44 +2,47 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>Age Gap Calculator</title>
     <link rel="stylesheet" href="../css/style.css" />
   </head>
   <body>
     <main>
-      <form>
-        <div class="input-day">
-          <label for="day" class="label-day">DAY</label>
-          <input type="text" id="day" name="day" placeholder="DD" />
-          <p class="input-error-day">This field is required</p>
+      <div class="container">
+        <form>
+          <div class="input-day">
+            <label for="day" class="label-day">DAY</label>
+            <input type="text" id="day" name="day" placeholder="DD" />
+            <p class="input-error-day">This field is required</p>
+          </div>
+          <div class="input-month">
+            <label for="month" class="label-month">MONTH</label>
+            <input type="text" id="month" name="month" placeholder="MM" />
+            <p class="input-error-month">This field is required</p>
+          </div>
+          <div class="input-year">
+            <label for="year" class="label-year">YEAR</label>
+            <input type="text" id="year" name="year" placeholder="YYYY" />
+            <p class="input-error-year">This field is required</p>
+          </div>
+        </form>
+        <div class="form-button">
+          <div class="button"></div>
         </div>
-        <div class="input-month">
-          <label for="month" class="label-month">MONTH</label>
-          <input type="text" id="month" name="month" placeholder="MM" />
-          <p class="input-error-month">This field is required</p>
+        <div class="form-result">
+          <section class="result-years">
+            <span class="show-result-years">--</span>
+            <span>years</span>
+          </section>
+          <section class="result-months">
+            <span class="show-result-months">--</span>
+            <span>months</span>
+          </section>
+          <section class="result-days">
+            <span class="show-result-days">--</span>
+            <span>days</span>
+          </section>
         </div>
-        <div class="input-year">
-          <label for="year" class="label-year">YEAR</label>
-          <input type="text" id="year" name="year" placeholder="YYYY" />
-          <p class="input-error-year">This field is required</p>
-        </div>
-      </form>
-      <div class="form-button">
-        <div class="button"></div>
-      </div>
-      <div class="form-result">
-        <section class="result-years">
-          <h1 class="show-result-years">--</h1>
-          <h1>years</h1>
-        </section>
-        <section class="result-months">
-          <h1 class="show-result-months">--</h1>
-          <h1>months</h1>
-        </section>
-        <section class="result-days">
-          <h1 class="show-result-days">--</h1>
-          <h1>days</h1>
-        </section>
       </div>
     </main>
     <script src="../js/main.js"></script>
