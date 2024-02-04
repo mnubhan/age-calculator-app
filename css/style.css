@@ -1,47 +1,68 @@
+@import url("https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Merriweather:ital@0;1&family=Poppins&family=Work+Sans:wght@400;500;800&display=swap");
 :root {
   --border-radius: 1.5rem 1.5rem 6.25rem;
   --top-margin: 5.5rem;
-  --margin-right-input:16px;
-  --line:#DCDCDC;
-  --margin-container:5.5rem 1rem 15rem;
-  --font-size-span:56px;
+  --margin-right-input: 16px;
+  --margin-container: 3rem 1.5rem;
+  --font-size-span: 56px;
+  --input-font-size: 1.25rem;
+  --label-font-size: 0.75rem;
+  --button-position: center;
+  --button-width: 4rem;
+  --button-height: 4rem;
+  --line: #dcdcdc;
+  --purple: #854dff;
+  --red: #ff5959;
 }
 
 @media (min-width: 426px) {
   :root {
     --border-radius: 1.5rem 1.5rem 12.5rem;
     --top-margin: 11rem;
-    --margin-right-input:32px;
-    --margin-container:11rem 19rem 7rem;
-    --font-size-span:104px;
+    --margin-right-input: 32px;
+    --margin-container: 3.5rem;
+    --font-size-span: 104px;
+    --input-font-size: 2rem;
+    --label-font-size: 1rem;
+    --button-position: right;
+    --button-width: 6rem;
+    --button-height: 6rem;
   }
 }
 * {
-  border: 1px dotted red;
+  //border: 1px dotted red;
+  font-family: "Abril Fatface", serif;
+  font-family: "Merriweather", serif;
+  font-family: "Poppins", sans-serif;
+  font-family: "Work Sans", sans-serif;
 }
 body {
   background: lightgrey;
 }
 
 main {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   min-height: 31rem;
   max-width: 53rem;
-  margin-inline: auto;
   border-radius: var(--border-radius);
   background: white;
-  margin-top: var(--top-margin);
 }
 
 form {
   display: flex;
   flex-flow: row;
   justify-content: left;
-  align-items: center;
   margin-inline: auto;
+  min-height: 5rem;
+  max-width: 46rem;
 }
 
 form div {
-  margin-right:var(--margin-right-input);
+  margin-right: var(--margin-right-input);
+  max-width: 10rem;
 }
 
 .input-day,
@@ -50,44 +71,84 @@ form div {
   display: flex;
   flex-flow: column;
 }
-.container{
-  margin:var()
-  max-width:46rem;
-  top:0;
-  bottom:0;
+
+.container {
+  position: relative;
+  margin: var(--margin-container);
+  min-height: 24rem;
+  max-width: 45rem;
+  top: 0;
+  bottom: 0;
   flex-flow: row;
-  margin:auto;
 }
+
+.form-button {
+  display: flex;
+  flex-flow: row;
+  justify-content: var(--button-position);
+  position: relative;
+  max-width: 46rem;
+  min-height: 4rem;
+}
+
+.line {
+  position: absolute;
+  border: var(--line) solid 1px;
+  width: 100%;
+  background: var(--line);
+  z-index: -1;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
 .button {
-  background: black;
-  width: 96px;
-  height: 96px;
+  background: #854dff;
+  width: var(--button-width);
+  height: var(--button-height);
   border-radius: 50%;
 }
+
+label {
+  font-size: var(--font-size);
+  font-weight: 800;
+  letter-spacing: 0.1rem;
+}
+
 input {
   width: 100%;
-  min-height:3rem;
-  max-height:4.5rem;
+  min-height: 4rem;
   border: var(--line) solid 1px;
   border-radius: 0.5rem;
-
+  font-size: var(--input-font-size);
+  font-weight: 800;
+  padding: 0.1rem;
 }
 input.error {
-  border: red solid 1px;
+  border: var(--red) solid 1px;
 }
 
 label.error {
-  color: red;
+  color: var(--red);
 }
 
 .input-error-day,
 .input-error-month,
 .input-error-year {
-  color: red;
+  color: var(--red);
   font-style: italic;
   visibility: hidden;
+  font-size: var(--font-size);
+  margin: 0;
 }
 
-span{
-  font-size:var(--font-size-span)
+span {
+  font-size: var(--font-size-span);
+  font-weight: 800;
+  font-style: italic;
+}
+
+.show-result-years,
+.show-result-months,
+.show-result-days {
+  color: var(--purple);
 }
