@@ -81,6 +81,16 @@ form div {
   max-width: 10rem;
 }
 
+form {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: left;
+  align-items: center;
+}
+form div{
+  margin: 0 10px;
+}
+
 .input-day,
 .input-month,
 .input-year {
@@ -215,4 +225,7 @@ span {
 .show-result-months,
 .show-result-days {
   color: var(--purple);
+  justiy-content: left;
+  align-items: left;
 }
+
