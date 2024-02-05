@@ -1,3 +1,86 @@
+@import url("https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Merriweather:ital@0;1&family=Poppins&family=Work+Sans:wght@400;500;800&display=swap");
+:root {
+  --border-radius: 1.5rem 1.5rem 6.25rem;
+  --top-margin: 5.5rem;
+  --margin-right-input: 16px;
+  --margin-container: 3rem 1.5rem;
+  --font-size-span: 50px;
+  --font-size-error:0.75rem;
+  --input-font-size: 1.1rem;
+  --label-font-size: 0.75rem;
+  --button-position: center;
+  --button-width: 4rem;
+  --button-height: 4rem;
+  --pattern-width: 1.5rem;
+  --line: #dcdcdc;
+  --purple: #854dff;
+  --red: #ff5959;
+  --white:#fff;
+  --black:#151515;
+  --padding-input: 0.5rem;
+}
+@media (min-width:768px) {
+  :root {
+    --font-size-span: 60px;
+    --button-position: right;
+    --input-font-size: 1.5rem;
+
+  }
+}
+
+@media (min-width: 1440px) {
+  :root {
+    --border-radius: 1.5rem 1.5rem 12.5rem;
+    --top-margin: 11rem;
+    --margin-right-input: 32px;
+    --margin-container: 3.5rem;
+    --font-size-span: 104px;
+    --font-size-error:1rem;
+    --input-font-size: 2rem;
+    --label-font-size: 1rem;
+    --button-width: 6rem;
+    --button-height: 6rem;
+    --pattern-width: 2.75rem;
+    --padding-input: 1rem;
+
+  }
+}
+* {
+  //border: 1px dotted red;
+  font-family: "Abril Fatface", serif;
+  font-family: "Merriweather", serif;
+  font-family: "Poppins", sans-serif;
+  font-family: "Work Sans", sans-serif;
+}
+body {
+  background: lightgrey;
+}
+
+main {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  min-height: 31rem;
+  max-width: 53rem;
+  border-radius: var(--border-radius);
+  background: white;
+}
+
+form {
+  display: flex;
+  flex-flow: row;
+  justify-content: left;
+  margin-inline: auto;
+  min-height: 5rem;
+  max-width: 46rem;
+}
+
+form div {
+  margin-right: var(--margin-right-input);
+  max-width: 10rem;
+}
+
 form {
   display: flex;
   flex-flow: row wrap;
@@ -7,31 +90,142 @@ form {
 form div{
   margin: 0 10px;
 }
+
 .input-day,
 .input-month,
 .input-year {
   display: flex;
   flex-flow: column;
+  min-width:5rem;
+  max-width: 10rem;
+}
+
+.container {
+  position: relative;
+  margin: var(--margin-container);
+  min-height: 24rem;
+  max-width: 45rem;
+  top: 0;
+  bottom: 0;
+  flex-flow: row;
+}
+
+.form-button {
+  display: flex;
+  flex-flow: row;
+  justify-content: var(--button-position);
+  position: relative;
+  max-width: 46rem;
+  min-height: 4rem;
+}
+
+.line {
+  position: absolute;
+  border: var(--line) solid 1px;
+  width: 100%;
+  background: var(--line);
+  z-index: -1;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+
+.button {
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  background: #854dff;
+  width: var(--button-width);
+  height: var(--button-height);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background 0.5s ease;
+}
+
+.button:hover{
+  background:var(--black);
+}
+
+.pattern{
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  width:var(--pattern-width);
+  aspect-ratio: 1/1;
+  overflow: hidden;
+}
+
+.straight-line{
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  height:100%;
+  border: var(--white) solid 1px;
+}
+
+.quarter-circle{
+  position:absolute;
+  aspect-ratio:1/1;
+  width:var(--pattern-width);
+  border: var(--white) solid 1px;
+  border-radius: 50%;
+}
+.left{
+  top:50%;
+  left:50%;
+}
+.right{
+  top:50%;
+  right:50%;
+}
+
+label {
+  font-size: var(--font-size);
+  font-weight: 800;
+  letter-spacing: 0.1rem;
+}
+
+input {
+  width: 100%;
+  min-height: 3.4rem;
+  border: var(--line) solid 1px;
+  border-radius: 0.5rem;
+  font-size: var(--input-font-size);
+  font-weight: 800;
+  padding:var(--padding-input); ;
+  box-sizing: border-box;
+}
+input.error {
+  border: var(--red) solid 1px;
+}
+
+label.error {
+  color: var(--red);
+}
+
+.input-error-day,
+.input-error-month,
+.input-error-year {
+  color: var(--red);
+  font-style: italic;
+  visibility: hidden;
+  font-size: var(--font-size-error);
+  margin: 0;
+}
+
+span {
+  font-size: var(--font-size-span);
+  font-weight: 800;
+  font-style: italic;
+}
+
+.show-result-years,
+.show-result-months,
+.show-result-days {
+  color: var(--purple);
   justiy-content: left;
   align-items: left;
 }
 
-.button {
-  background: black;
-  width: 96px;
-  height: 96px;
-  border-radius: 50%;
-}
-input.error {
-  border: red solid 1px;
-}
-label.error {
-  color: red;
-}
-.input-error-day,
-.input-error-month,
-.input-error-year {
-  color: red;
-  font-style: italic;
-  visibility: hidden;
-}
