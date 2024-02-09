@@ -124,3 +124,4 @@ const showResult = () => {
   }
 };
 btn.addEventListener("click", showResult);
+btn.addEventListener("touch", showResult);
